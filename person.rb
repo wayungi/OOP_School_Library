@@ -6,16 +6,6 @@ class Person
     @parent_permission = parent_permission
   end
 
-  # define getters
-  def id
-    @id
-  end
-
-  def name
-    @name
-  end
-
-  def age
-    @age
-  end
+  attr_accessor :name, :age
+  attr_reader :id
 end
