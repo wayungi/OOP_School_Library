@@ -1,4 +1,4 @@
-class Person
+class Person < Nameable
   def initialize(age, name = 'Unknown', parent_permission: true)
     @id = ''
     @name = name
