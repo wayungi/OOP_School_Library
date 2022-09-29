@@ -10,5 +10,6 @@ class Classroom
   # Add a student to the classroom
   def add_student(student)
     students.push(student)
+    student.belongs = self
   end
 end

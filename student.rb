@@ -1,9 +1,14 @@
 class Student < Person
-  attr_accessor :belongs_to
+  attr_reader :belongs
 
   def initialize(classroom)
     super()
     @classroom = classroom
+  end
+
+  def belongs=(classroom)
+    @belongs = classroom
+    classroom.students.push(self) unless classroom.students.include?(self)
   end
 
   def play_hooky
