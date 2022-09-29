@@ -1,4 +1,6 @@
 class Student < Person
+  attr_accessor :belongs_to
+
   def initialize(classroom)
     super()
     @classroom = classroom
