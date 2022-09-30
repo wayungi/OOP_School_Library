@@ -53,3 +53,5 @@ Style/HashTransformValues:
   Enabled: false
 Lint/MissingSuper:
   Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
