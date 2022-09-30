@@ -61,13 +61,13 @@ class App
     @books.each_with_index {|book, index| puts "#{index}) Title: #{book.title}  Author: #{book.author}"}
     book_index = gets.chomp.to_i
     puts "Select a person from the following list by number (not id)"
-    @persons.each_with_index {|person, index| puts "#{index} [#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}"}
+    @persons.each_with_index {|person, index| puts "#{index}) [#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}"}
     person_index = gets.chomp.to_i
-
     puts 'Date'
     rental_date = gets.chomp
     rental = Rental.new(rental_date,@persons[person_index], @books[book_index])
     @rentals.push(rental)
+    puts 'Rental created successfully'
   end
 
   # list all rentals for a given person id.
