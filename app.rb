@@ -1,5 +1,6 @@
 require './student'
 require './teacher.rb'
+require './book.rb'
 
 class App
   #   def list_all_books; end
@@ -32,7 +33,15 @@ class App
     end
   end
 
-  #   def create_a_book; end
+  def create_a_book
+    print 'Title: '
+    title = gets.chomp
+    print 'Author: '
+    author = gets.chomp
+    book = Book.new(author, title)
+    puts "Book succesfully created"
+    puts ''
+  end
 
   #   def create_a_rental; end
 
@@ -41,7 +50,6 @@ class App
 
   #   Display all user options
   def display_user_options
-    puts 'Welcome to School Library App'
     puts ''
     puts 'Please choose an option by entering a number:'
     puts '1 - List all books'
@@ -65,7 +73,7 @@ class App
       person_type = gets.chomp
       create_a_person(person_type)
     when '4'
-      puts 'Create a book'
+      create_a_book
     when '5'
       puts 'Create a rental'
     when '6'
@@ -78,6 +86,7 @@ class App
   end
 
   def run()
+    puts 'Welcome to School Library App'
     choice = 0
     while choice != '7'
       display_user_options
