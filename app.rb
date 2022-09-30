@@ -15,7 +15,10 @@ class App
       name = gets.chomp
       print 'Has parent permission? [Y/N]'
       parent_permission = gets.chomp # todo: convert to boolean
-      Student.new(age, name, parent_permission)
+      parent_permission = true
+      studnet = Student.new(age, name, '')
+      puts "Student created succesfully"
+      puts ''
     elsif person_type == "2"
       print "Age: "
       age = gets.chomp
@@ -24,6 +27,8 @@ class App
       print "Specialization: "
       specialization = gets.chomp
       Teacher.new(age, name, specialization)
+      puts "Teacher created succesfully"
+      puts ''
     end
   end
 
