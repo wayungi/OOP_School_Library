@@ -1,4 +1,5 @@
 require './student'
+require './teacher.rb'
 
 class App
   #   def list_all_books; end
@@ -13,8 +14,16 @@ class App
       print 'Name: '
       name = gets.chomp
       print 'Has parent permission? [Y/N]'
-      parent_permission = gets.chomp
+      parent_permission = gets.chomp # todo: convert to boolean
       Student.new(age, name, parent_permission)
+    elsif person_type == "2"
+      print "Age: "
+      age = gets.chomp
+      print "Name: "
+      name = gets.chomp
+      print "Specialization: "
+      specialization = gets.chomp
+      Teacher.new(age, name, specialization)
     end
   end
 
