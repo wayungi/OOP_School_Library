@@ -62,9 +62,14 @@ class App
   end
 
   def run()
-    display_user_options
-    choice = gets.chomp
-    case_handler(choice)
+    choice = 0
+    while choice != "7"
+      display_user_options
+      choice = gets.chomp
+      if choice != "7"
+        case_handler(choice)
+      end
+    end
   end
 end
 
