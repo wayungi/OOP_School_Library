@@ -1,3 +1,5 @@
+require './student'
+
 class App
   #   def list_all_books; end
 
@@ -5,15 +7,15 @@ class App
 
   # teacher or student, not a plain Person
   def create_a_person(person_type)
-    if person_type == "1"
-        print "Age:"
-        age = gets.chomp
-        print "Name: "
-        name =  gets.chomp
-        print "Has parent permission? [Y/N]"
-        parent_permission = gets.chomp
+    if person_type == '1'
+      print 'Age:'
+      age = gets.chomp
+      print 'Name: '
+      name = gets.chomp
+      print 'Has parent permission? [Y/N]'
+      parent_permission = gets.chomp
+      Student.new(age, name, parent_permission)
     end
-
   end
 
   #   def create_a_book; end
@@ -63,12 +65,10 @@ class App
 
   def run()
     choice = 0
-    while choice != "7"
+    while choice != '7'
       display_user_options
       choice = gets.chomp
-      if choice != "7"
-        case_handler(choice)
-      end
+      case_handler(choice) if choice != '7'
     end
   end
 end
