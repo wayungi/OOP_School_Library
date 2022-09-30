@@ -12,7 +12,9 @@ class App
     @books.each {|book| puts "Title: #{book.title}  Author: #{book.author}" }
   end
 
-  #   def list_all_people; end
+  def list_all_people
+    @persons.each {|person| puts "[#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}" }
+  end
 
   # teacher or student, not a plain Person
   def create_a_person(person_type)
@@ -25,7 +27,7 @@ class App
       parent_permission = gets.chomp # todo: convert to boolean
       parent_permission = true
       student = Student.new(age, name, '')
-      persons.push(student)
+      @persons.push(student)
       puts "Student created succesfully"
       puts ''
     elsif person_type == "2"
@@ -36,7 +38,7 @@ class App
       print "Specialization: "
       specialization = gets.chomp
       teacher = Teacher.new(age, name, specialization)
-      persons.push(teacher)
+      @persons.push(teacher)
       puts "Teacher created succesfully"
       puts ''
     end
@@ -77,7 +79,7 @@ class App
     when '1'
       list_all_books
     when '2'
-      puts 'List all people'
+      list_all_people
     when '3'
       print 'Do you want to create a Student (1) or a Teacher (2)? [Input the number]:'
       person_type = gets.chomp
