@@ -3,7 +3,14 @@ require './teacher.rb'
 require './book.rb'
 
 class App
-  #   def list_all_books; end
+  def initialize
+    @books = []
+    @persons = []
+  end
+
+  def list_all_books
+    @books.each {|book| puts "Title: #{book.title}  Author: #{book.author}" }
+  end
 
   #   def list_all_people; end
 
@@ -17,7 +24,8 @@ class App
       print 'Has parent permission? [Y/N]'
       parent_permission = gets.chomp # todo: convert to boolean
       parent_permission = true
-      studnet = Student.new(age, name, '')
+      student = Student.new(age, name, '')
+      persons.push(student)
       puts "Student created succesfully"
       puts ''
     elsif person_type == "2"
@@ -27,7 +35,8 @@ class App
       name = gets.chomp
       print "Specialization: "
       specialization = gets.chomp
-      Teacher.new(age, name, specialization)
+      teacher = Teacher.new(age, name, specialization)
+      persons.push(teacher)
       puts "Teacher created succesfully"
       puts ''
     end
@@ -39,6 +48,7 @@ class App
     print 'Author: '
     author = gets.chomp
     book = Book.new(author, title)
+    @books.push(book)
     puts "Book succesfully created"
     puts ''
   end
@@ -65,7 +75,7 @@ class App
   def case_handler(choice)
     case choice
     when '1'
-      puts 'List all books'
+      list_all_books
     when '2'
       puts 'List all people'
     when '3'
