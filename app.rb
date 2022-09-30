@@ -1,11 +1,13 @@
 require './student'
 require './teacher.rb'
 require './book.rb'
+require './rental.rb'
 
 class App
   def initialize
     @books = []
     @persons = []
+    @rentals = []
   end
 
   def list_all_books
@@ -16,7 +18,6 @@ class App
     @persons.each {|person| puts "[#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}" }
   end
 
-  # teacher or student, not a plain Person
   def create_a_person(person_type)
     if person_type == '1'
       print 'Age:'
@@ -24,7 +25,7 @@ class App
       print 'Name: '
       name = gets.chomp
       print 'Has parent permission? [Y/N]'
-      parent_permission = gets.chomp # todo: convert to boolean
+      parent_permission = gets.chomp
       parent_permission = true
       student = Student.new(age, name, '')
       @persons.push(student)
@@ -55,7 +56,19 @@ class App
     puts ''
   end
 
-  #   def create_a_rental; end
+  def create_a_rental
+    puts "Select a book from the following list by number"
+    @books.each_with_index {|book, index| puts "#{index}) Title: #{book.title}  Author: #{book.author}"}
+    book_index = gets.chomp.to_i
+    puts "Select a person from the following list by number (not id)"
+    @persons.each_with_index {|person, index| puts "#{index} [#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}"}
+    person_index = gets.chomp.to_i
+
+    puts 'Date'
+    rental_date = gets.chomp
+    rental = Rental.new(rental_date,@persons[person_index], @books[book_index])
+    @rentals.push(rental)
+  end
 
   # list all rentals for a given person id.
   # def list_all_rentals(id); end
@@ -87,7 +100,7 @@ class App
     when '4'
       create_a_book
     when '5'
-      puts 'Create a rental'
+      create_a_rental
     when '6'
       puts 'List all rentals for a given person id'
     when '7'
