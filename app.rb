@@ -65,13 +65,16 @@ class App
     person_index = gets.chomp.to_i
     puts 'Date'
     rental_date = gets.chomp
-    rental = Rental.new(rental_date,@persons[person_index], @books[book_index])
+    rental = Rental.new(rental_date, @persons[person_index], @books[book_index])
     @rentals.push(rental)
     puts 'Rental created successfully'
   end
 
   # list all rentals for a given person id.
-  # def list_all_rentals(id); end
+  def list_all_rentals(id)
+    sorted = @rentals.select {|rental| id == rental.person.id}
+    sorted.each {|rental| puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"}
+  end
 
   #   Display all user options
   def display_user_options
@@ -102,7 +105,9 @@ class App
     when '5'
       create_a_rental
     when '6'
-      puts 'List all rentals for a given person id'
+      print 'ID of person: '
+      id = gets.chomp.to_i
+      list_all_rentals(id)
     when '7'
       puts 'Exit'
     else
