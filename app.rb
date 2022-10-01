@@ -1,7 +1,7 @@
 require './student'
-require './teacher.rb'
-require './book.rb'
-require './rental.rb'
+require './teacher'
+require './book'
+require './rental'
 
 class App
   def initialize
@@ -11,15 +11,16 @@ class App
   end
 
   def list_all_books
-    @books.each {|book| puts "Title: #{book.title}  Author: #{book.author}" }
+    @books.each { |book| puts "Title: #{book.title}  Author: #{book.author}" }
   end
 
   def list_all_people
-    @persons.each {|person| puts "[#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}" }
+    @persons.each { |person| puts "[#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}" }
   end
 
   def create_a_person(person_type)
-    if person_type == '1'
+    case person_type
+    when '1'
       print 'Age:'
       age = gets.chomp
       print 'Name: '
@@ -29,18 +30,18 @@ class App
       parent_permission = true
       student = Student.new(age, name, '')
       @persons.push(student)
-      puts "Student created succesfully"
+      puts 'Student created succesfully'
       puts ''
-    elsif person_type == "2"
-      print "Age: "
+    when '2'
+      print 'Age: '
       age = gets.chomp
-      print "Name: "
+      print 'Name: '
       name = gets.chomp
-      print "Specialization: "
+      print 'Specialization: '
       specialization = gets.chomp
       teacher = Teacher.new(age, name, specialization)
       @persons.push(teacher)
-      puts "Teacher created succesfully"
+      puts 'Teacher created succesfully'
       puts ''
     end
   end
@@ -52,16 +53,18 @@ class App
     author = gets.chomp
     book = Book.new(author, title)
     @books.push(book)
-    puts "Book succesfully created"
+    puts 'Book succesfully created'
     puts ''
   end
 
   def create_a_rental
-    puts "Select a book from the following list by number"
-    @books.each_with_index {|book, index| puts "#{index}) Title: #{book.title}  Author: #{book.author}"}
+    puts 'Select a book from the following list by number'
+    @books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}  Author: #{book.author}" }
     book_index = gets.chomp.to_i
-    puts "Select a person from the following list by number (not id)"
-    @persons.each_with_index {|person, index| puts "#{index}) [#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}"}
+    puts 'Select a person from the following list by number (not id)'
+    @persons.each_with_index do |person, index|
+      puts "#{index}) [#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}"
+    end
     person_index = gets.chomp.to_i
     puts 'Date'
     rental_date = gets.chomp
@@ -72,8 +75,8 @@ class App
 
   # list all rentals for a given person id.
   def list_all_rentals(id)
-    sorted = @rentals.select {|rental| id == rental.person.id}
-    sorted.each {|rental| puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"}
+    sorted = @rentals.select { |rental| id == rental.person.id }
+    sorted.each { |rental| puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" }
   end
 
   #   Display all user options
