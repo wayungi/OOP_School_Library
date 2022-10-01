@@ -18,31 +18,38 @@ class App
     @persons.each { |person| puts "[#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}" }
   end
 
+  def create_student
+    print 'Age:'
+    age = gets.chomp
+    print 'Name: '
+    name = gets.chomp
+    print 'Has parent permission? [Y/N]'
+    gets.chomp
+    student = Student.new(age, name, '')
+    @persons.push(student)
+    puts 'Student created succesfully'
+    puts ''
+  end
+
+  def create_teacher
+    print 'Age: '
+    age = gets.chomp
+    print 'Name: '
+    name = gets.chomp
+    print 'Specialization: '
+    specialization = gets.chomp
+    teacher = Teacher.new(age, name, specialization)
+    @persons.push(teacher)
+    puts 'Teacher created succesfully'
+    puts ''
+  end
+
   def create_a_person(person_type)
     case person_type
     when '1'
-      print 'Age:'
-      age = gets.chomp
-      print 'Name: '
-      name = gets.chomp
-      print 'Has parent permission? [Y/N]'
-      parent_permission = gets.chomp
-      parent_permission = true
-      student = Student.new(age, name, '')
-      @persons.push(student)
-      puts 'Student created succesfully'
-      puts ''
+      create_student
     when '2'
-      print 'Age: '
-      age = gets.chomp
-      print 'Name: '
-      name = gets.chomp
-      print 'Specialization: '
-      specialization = gets.chomp
-      teacher = Teacher.new(age, name, specialization)
-      @persons.push(teacher)
-      puts 'Teacher created succesfully'
-      puts ''
+      create_teacher
     end
   end
 
@@ -74,7 +81,9 @@ class App
   end
 
   # list all rentals for a given person id.
-  def list_all_rentals(id)
+  def list_all_rentals
+    print 'ID of person: '
+    id = gets.chomp.to_i
     sorted = @rentals.select { |rental| id == rental.person.id }
     sorted.each { |rental| puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" }
   end
@@ -108,13 +117,10 @@ class App
     when '5'
       create_a_rental
     when '6'
-      print 'ID of person: '
-      id = gets.chomp.to_i
-      list_all_rentals(id)
+      list_all_rentals
     when '7'
       puts 'Exit'
-    else
-      puts 'Invalid input'
+    else puts 'Invalid input'
     end
   end
 
@@ -128,10 +134,3 @@ class App
     end
   end
 end
-
-def main
-  app = App.new
-  app.run
-end
-
-main
