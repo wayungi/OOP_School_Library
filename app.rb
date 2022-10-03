@@ -3,6 +3,7 @@ require './teacher'
 require './book'
 require './rental'
 require './user_options'
+require './person'
 
 class App
   def initialize
@@ -33,14 +34,14 @@ class App
   #   # puts ''
   # end
 
-  def create_a_person(person_type)
-    case person_type
-    when '1'
-      Student.create_student
-    when '2'
-      Teacher.create_teacher
-    end
-  end
+  # def create_a_person(person_type)
+  #   case person_type
+  #   when '1'
+  #     Student.create_student
+  #   when '2'
+  #     Teacher.create_teacher
+  #   end
+  # end
 
 
   # def create_teacher
@@ -101,7 +102,7 @@ class App
     when '3'
       print 'Do you want to create a Student (1) or a Teacher (2)? [Input the number]:'
       person_type = gets.chomp
-      person = create_a_person(person_type)
+      person = Person.create_a_person(person_type)
       @persons.push(person)
     when '4'
       book = Book.create_a_book

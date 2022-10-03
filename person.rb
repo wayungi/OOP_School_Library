@@ -11,6 +11,15 @@ class Person < Nameable
     @rentals = []
   end
 
+  def self.create_a_person(person_type)
+    case person_type
+    when '1'
+      Student.create_student
+    when '2'
+      Teacher.create_teacher
+    end
+  end
+
   def add_rental(book, date)
     @rentals << Rental.new(book, date, self)
   end
