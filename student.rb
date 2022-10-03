@@ -15,10 +15,6 @@ class Student < Person
     print 'Has parent permission? [Y/N]'
     gets.chomp
     Student.new(age, name, '')
-    # student = Student.new(age, name, '')
-    # @persons.push(student)
-    # puts 'Student created succesfully'
-    # puts ''
   end
 
   def belongs=(classroom)

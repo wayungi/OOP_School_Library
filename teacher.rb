@@ -13,9 +13,6 @@ class Teacher < Person
     print 'Specialization: '
     specialization = gets.chomp
     Teacher.new(age, name, specialization)
-    # @persons.push(teacher)
-    # puts 'Teacher created succesfully'
-    # puts ''
   end
 
   def can_use_services?

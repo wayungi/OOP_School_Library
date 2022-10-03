@@ -14,9 +14,6 @@ class Book
     print 'Author: '
     author = gets.chomp
     Book.new(author, title)
-    # @books.push(book)
-    # puts 'Book succesfully created'
-    # puts ''
   end
 
   def self.list_all_books(books)
