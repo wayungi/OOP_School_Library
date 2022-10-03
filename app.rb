@@ -68,24 +68,25 @@ class App
   #   # puts ''
   # end
 
-  def create_a_rental
-    puts 'Select a book from the following list by number'
-    @books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}  Author: #{book.author}" }
-    book_index = gets.chomp.to_i
-    puts 'Select a person from the following list by number (not id)'
-    @persons.each_with_index do |person, index|
-      puts "#{index}) [#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}"
-    end
-    person_index = gets.chomp.to_i
-    puts 'Date'
-    rental_date = gets.chomp
-    rental = Rental.new(rental_date, @persons[person_index], @books[book_index])
-    @rentals.push(rental)
-    puts 'Rental created successfully'
-  end
+  # def create_a_rental
+  #   puts 'Select a book from the following list by number'
+  #   @books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}  Author: #{book.author}" }
+  #   book_index = gets.chomp.to_i
+  #   puts 'Select a person from the following list by number (not id)'
+  #   @persons.each_with_index do |person, index|
+  #     puts "#{index}) [#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}"
+  #   end
+  #   person_index = gets.chomp.to_i
+  #   puts 'Date'
+  #   rental_date = gets.chomp
+  #   rental = Rental.new(rental_date, @persons[person_index], @books[book_index])
+  #   @rentals.push(rental)
+  #   puts 'Rental created successfully'
+  # end
 
   # list all rentals for a given person id.
   def list_all_rentals
+    list_all_people
     print 'ID of person: '
     id = gets.chomp.to_i
     sorted = @rentals.select { |rental| id == rental.person.id }
@@ -108,7 +109,8 @@ class App
       book = Book.create_a_book
       @books.push(book)
     when '5'
-      create_a_rental
+      # create_a_rental
+      Rental.create_a_rental(@books, @persons, @rentals)
     when '6'
       list_all_rentals
     when '7'
