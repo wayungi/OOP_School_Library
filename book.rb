@@ -19,6 +19,10 @@ class Book
     # puts ''
   end
 
+  def self.list_all_books(books)
+    books.each { |book| puts "Title: #{book.title}  Author: #{book.author}" }
+  end
+
   def add_rental(date, person)
     @rentals << Rental.new(date, person, self)
   end

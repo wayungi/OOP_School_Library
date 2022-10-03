@@ -1,3 +1,4 @@
+require './person'
 class Rental
   attr_accessor :date, :person, :book
 
@@ -27,5 +28,13 @@ class Rental
     rental = Rental.new(rental_date, persons[person_index], books[book_index])
     rentals.push(rental)
     puts 'Rental created successfully'
+  end
+
+  def self.list_all_rentals(persons, rentals)
+    Person.list_all_people(persons)
+    print 'ID of person: '
+    id = gets.chomp.to_i
+    sorted = rentals.select { |rental| id == rental.person.id }
+    sorted.each { |rental| puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" }
   end
 end

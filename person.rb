@@ -20,6 +20,10 @@ class Person < Nameable
     end
   end
 
+  def self.list_all_people(persons)
+    persons.each { |person| puts "[#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}" }
+  end
+
   def add_rental(book, date)
     @rentals << Rental.new(book, date, self)
   end
