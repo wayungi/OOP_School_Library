@@ -2,6 +2,7 @@ require './student'
 require './teacher'
 require './book'
 require './rental'
+require './user_options'
 
 class App
   def initialize
@@ -88,19 +89,6 @@ class App
     sorted.each { |rental| puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" }
   end
 
-  #   Display all user options
-  def display_user_options
-    puts ''
-    puts 'Please choose an option by entering a number:'
-    puts '1 - List all books'
-    puts '2 - List all people'
-    puts '3 - Create a person'
-    puts '4 - Create a book'
-    puts '5 - Create a rental'
-    puts '6 - List all rentals for a given person id'
-    puts '7 - Exit'
-  end
-
   #   sweep through user options
   def case_handler(choice)
     case choice
@@ -125,10 +113,12 @@ class App
   end
 
   def run()
+    user_options = UserOptions.new()
     puts 'Welcome to School Library App'
     choice = 0
     while choice != '7'
-      display_user_options
+      # display_user_options
+      user_options.display_user_options
       choice = gets.chomp
       case_handler(choice) if choice != '7'
     end
