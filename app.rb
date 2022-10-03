@@ -38,23 +38,23 @@ class App
     when '1'
       Student.create_student
     when '2'
-      create_teacher
+      Teacher.create_teacher
     end
   end
 
 
-  def create_teacher
-    print 'Age: '
-    age = gets.chomp
-    print 'Name: '
-    name = gets.chomp
-    print 'Specialization: '
-    specialization = gets.chomp
-    teacher = Teacher.new(age, name, specialization)
-    @persons.push(teacher)
-    puts 'Teacher created succesfully'
-    puts ''
-  end
+  # def create_teacher
+  #   print 'Age: '
+  #   age = gets.chomp
+  #   print 'Name: '
+  #   name = gets.chomp
+  #   print 'Specialization: '
+  #   specialization = gets.chomp
+  #   Teacher.new(age, name, specialization)
+  #   # @persons.push(teacher)
+  #   # puts 'Teacher created succesfully'
+  #   # puts ''
+  # end
 
   # def create_a_book
   #   print 'Title: '
