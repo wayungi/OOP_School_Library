@@ -32,7 +32,7 @@ Command line application built with Object Oriented programming
 👤 **Vitor Guedes Madeira**
 - GitHub: [@vitorguedesmadeira](https://github.com/VitorGuedesMadeira)
 - Twitter: [@CDahguedes](https://twitter.com/CDahguedes)
-- LinkedIn: (https://www.linkedin.com/in/vitor-guedes-madeira/)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/vitor-guedes-madeira/)
 
 ## 🤝 Contributing
 
