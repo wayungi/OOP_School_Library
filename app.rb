@@ -59,10 +59,10 @@ class App
     title = gets.chomp
     print 'Author: '
     author = gets.chomp
-    book = Book.new(author, title)
-    @books.push(book)
-    puts 'Book succesfully created'
-    puts ''
+    Book.new(author, title)
+    # @books.push(book)
+    # puts 'Book succesfully created'
+    # puts ''
   end
 
   def create_a_rental
@@ -101,7 +101,8 @@ class App
       person_type = gets.chomp
       create_a_person(person_type)
     when '4'
-      create_a_book
+      book = create_a_book
+      @books.push(book)
     when '5'
       create_a_rental
     when '6'
