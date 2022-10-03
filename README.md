@@ -29,6 +29,11 @@ Command line application built with Object Oriented programming
 - Twitter: [@twitterhandle](https://twitter.com/FrancisWayungi)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/francis-wayungi-3aa626231)
 
+👤 **Vitor Guedes Madeira**
+- GitHub: [@vitorguedesmadeira](https://github.com/VitorGuedesMadeira)
+- Twitter: [@CDahguedes](https://twitter.com/CDahguedes)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/vitor-guedes-madeira/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
