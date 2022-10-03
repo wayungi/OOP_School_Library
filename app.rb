@@ -19,18 +19,29 @@ class App
     @persons.each { |person| puts "[#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}" }
   end
 
-  def create_student
-    print 'Age:'
-    age = gets.chomp
-    print 'Name: '
-    name = gets.chomp
-    print 'Has parent permission? [Y/N]'
-    gets.chomp
-    student = Student.new(age, name, '')
-    @persons.push(student)
-    puts 'Student created succesfully'
-    puts ''
+  # def create_student
+  #   print 'Age:'
+  #   age = gets.chomp
+  #   print 'Name: '
+  #   name = gets.chomp
+  #   print 'Has parent permission? [Y/N]'
+  #   gets.chomp
+  #   Student.new(age, name, '')
+  #   # student = Student.new(age, name, '')
+  #   # @persons.push(student)
+  #   # puts 'Student created succesfully'
+  #   # puts ''
+  # end
+
+  def create_a_person(person_type)
+    case person_type
+    when '1'
+      Student.create_student
+    when '2'
+      create_teacher
+    end
   end
+
 
   def create_teacher
     print 'Age: '
@@ -43,15 +54,6 @@ class App
     @persons.push(teacher)
     puts 'Teacher created succesfully'
     puts ''
-  end
-
-  def create_a_person(person_type)
-    case person_type
-    when '1'
-      create_student
-    when '2'
-      create_teacher
-    end
   end
 
   # def create_a_book
@@ -99,7 +101,8 @@ class App
     when '3'
       print 'Do you want to create a Student (1) or a Teacher (2)? [Input the number]:'
       person_type = gets.chomp
-      create_a_person(person_type)
+      person = create_a_person(person_type)
+      @persons.push(person)
     when '4'
       book = Book.create_a_book
       @books.push(book)
