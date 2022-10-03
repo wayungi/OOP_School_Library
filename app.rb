@@ -113,7 +113,7 @@ class App
   end
 
   def run()
-    user_options = UserOptions.new()
+    user_options = UserOptions.new
     puts 'Welcome to School Library App'
     choice = 0
     while choice != '7'
