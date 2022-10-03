@@ -89,7 +89,7 @@ class App
     sorted.each { |rental| puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" }
   end
 
-  #   sweep through user options
+  # sweep through user options
   def case_handler(choice)
     case choice
     when '1'
