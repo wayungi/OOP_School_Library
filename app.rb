@@ -54,16 +54,16 @@ class App
     end
   end
 
-  def create_a_book
-    print 'Title: '
-    title = gets.chomp
-    print 'Author: '
-    author = gets.chomp
-    Book.new(author, title)
-    # @books.push(book)
-    # puts 'Book succesfully created'
-    # puts ''
-  end
+  # def create_a_book
+  #   print 'Title: '
+  #   title = gets.chomp
+  #   print 'Author: '
+  #   author = gets.chomp
+  #   Book.new(author, title)
+  #   # @books.push(book)
+  #   # puts 'Book succesfully created'
+  #   # puts ''
+  # end
 
   def create_a_rental
     puts 'Select a book from the following list by number'
@@ -101,7 +101,7 @@ class App
       person_type = gets.chomp
       create_a_person(person_type)
     when '4'
-      book = create_a_book
+      book = Book.create_a_book
       @books.push(book)
     when '5'
       create_a_rental
