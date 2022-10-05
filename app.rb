@@ -4,6 +4,7 @@ require './book'
 require './rental'
 require './user_options'
 require './person'
+require './file_io'
 
 class App
   def initialize
@@ -30,7 +31,10 @@ class App
     when '6'
       Rental.list_all_rentals(@persons, @rentals)
     when '7'
+      FileIO.writer_books('books', @books)
+      FileIO.writer_people('people', @persons)
       puts 'Exit'
+      exit
     else puts 'Invalid input'
     end
   end
@@ -38,12 +42,13 @@ class App
   def run()
     user_options = UserOptions.new
     puts 'Welcome to School Library App'
+    @books = FileIO.reader('books')
     choice = 0
     while choice != '7'
       # display_user_options
       user_options.display_user_options
       choice = gets.chomp
-      case_handler(choice) if choice != '7'
+      case_handler(choice) # if choice != '7'
     end
   end
 end
