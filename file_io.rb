@@ -74,6 +74,8 @@ class FileIO
         data.each do |person|
           if person['type'] == 'Student'
             @persons << Student.new(person['age'], person['name'], person['classroom'], person['parent_permission'])
+          elsif person['type'] == 'Teacher'
+            @persons << Teacher.new(person['age'], person['name'], person['specialization'])
           end
         end
         file.close
