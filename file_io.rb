@@ -17,7 +17,7 @@ class FileIO
           data_list.each do |item| 
             json_data << { title: item.title, author: item.author } 
           end 
-        elsif list_type == 'people'
+        elsif list_type == 'persons'
           data_list.each do |person|
             json_data << { name: person.name, id: person.id, age: person.age }
           end
@@ -26,10 +26,11 @@ class FileIO
             json_data << {}
           end
         end
+        puts json_data
         json_data
     end 
 
-    def self.writer_books(file_name, data_list)
+    def self.file_writer(file_name, data_list)
         File.write("./#{file_name}.json", JSON.pretty_generate(FileIO.create_hash(data_list, file_name)))
     end
 

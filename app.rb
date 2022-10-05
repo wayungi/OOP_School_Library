@@ -31,7 +31,8 @@ class App
     when '6'
       Rental.list_all_rentals(@persons, @rentals)
     when '7'
-      FileIO.writer_books('books', @books)
+      # FileIO.file_writer('books', @books)
+      FileIO.file_writer('persons', @persons)
       puts 'Exit'
       exit
     else puts 'Invalid input'
