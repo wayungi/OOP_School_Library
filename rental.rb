@@ -35,6 +35,6 @@ class Rental
     print 'ID of person: '
     id = gets.chomp.to_i
     sorted = rentals.select { |rental| id == rental.person.id }
-    sorted.each { |rental| puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" }
+    sorted.each { |rental| puts "Date: DATE, Book TITLE by AUTHOR" }
   end
 end

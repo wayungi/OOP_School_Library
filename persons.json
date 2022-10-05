@@ -2,13 +2,19 @@
   {
     "type": "Student",
     "name": "Francis",
-    "id": 62,
+    "id": 257,
     "age": "15"
   },
   {
     "type": "Teacher",
     "name": "Walyawula",
-    "id": 976,
+    "id": 442,
     "age": "45"
+  },
+  {
+    "type": "Student",
+    "name": "Vitor",
+    "id": 798,
+    "age": "30"
   }
 ]
