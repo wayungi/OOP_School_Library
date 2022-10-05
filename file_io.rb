@@ -15,6 +15,14 @@ class FileIO
         File.write("./#{file_name}.json", JSON.pretty_generate(FileIO.books_data(content)))
     end
 
+    def self.save_people(people)
+        people_json_array = []
+        people.each do |person|
+            people_json_array << { name: person.name, id: person.id, age: person.age }
+        end
+        people_json_array
+    end
+
     # def self.people_data(people)
     #   people_data_array = []
     #   people.each do |person| 
