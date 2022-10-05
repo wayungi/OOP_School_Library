@@ -70,7 +70,6 @@ class FileIO
       if File.exist?("#{file_name}.json")
         file = File.open("#{file_name}.json", 'r')
         data = JSON.parse(file.read)
-        # puts data
         data.each do |person|
           if person['type'] == 'Student'
             @persons << Student.new(person['age'], person['name'], person['classroom'], person['parent_permission'])
