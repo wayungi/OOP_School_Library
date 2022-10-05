@@ -1,12 +1,14 @@
 [
   {
+    "type": "Student",
     "name": "Francis",
-    "id": 130,
-    "age": "34"
+    "id": 62,
+    "age": "15"
   },
   {
-    "name": "bill",
-    "id": 643,
-    "age": "56"
+    "type": "Teacher",
+    "name": "Walyawula",
+    "id": 976,
+    "age": "45"
   }
 ]

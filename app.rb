@@ -32,7 +32,8 @@ class App
       Rental.list_all_rentals(@persons, @rentals)
     when '7'
       # FileIO.file_writer('books', @books)
-      FileIO.file_writer('persons', @persons)
+      # FileIO.file_writer('persons', @persons)
+      # FileIO.file_writer('rentals', @rentals)
       puts 'Exit'
       exit
     else puts 'Invalid input'
@@ -42,7 +43,8 @@ class App
   def run()
     user_options = UserOptions.new
     puts 'Welcome to School Library App'
-    @books = FileIO.reader('books')
+    # @books = FileIO.book_reader('books')
+    @persons = FileIO.person_reader('persons')
     choice = 0
     while choice != '7'
       # display_user_options

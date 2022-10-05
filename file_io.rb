@@ -1,15 +1,9 @@
 require 'json'
 require './book'
+require './student'
+require './teacher'
 
 class FileIO
-
-    # def self.books_data(books) 
-    #     books_data_array = [] 
-    #     books.each do |item| 
-    #         books_data_array << { title: item.title, author: item.author } 
-    #     end 
-    #     books_data_array 
-    # end 
 
     def self.create_hash(data_list, list_type)
         json_data = [] 
@@ -19,14 +13,18 @@ class FileIO
           end 
         elsif list_type == 'persons'
           data_list.each do |person|
-            json_data << { name: person.name, id: person.id, age: person.age }
+            if person.class.to_s == 'Student'
+              json_data << { type: 'Student', name: person.name, id: person.id, age: person.age }
+            elsif person.class.to_s == 'Teacher'
+                # todo: Add specialisation to teacher
+              json_data << { type: 'Teacher', name: person.name, id: person.id, age: person.age }
+            end
           end
         elsif list_type == 'rentals'
           data_list.each do |rental|
             json_data << {}
           end
         end
-        puts json_data
         json_data
     end 
 
@@ -51,19 +49,51 @@ class FileIO
     #     File.write("./#{file_name}.json", JSON.pretty_generate(FileIO.people_data(content)))
     # end
 
-
-    def self.reader(file_name)
-        @books = []
-        if File.exist?("#{file_name}.json")
-          file = File.open("#{file_name}.json", 'r')
-          data = JSON.parse(file.read)
-          data.each do |book|
-            @books << Book.new(book['title'], book['author'])
-          end
-          file.close
-          @books
-        else
-         []
+    def self.book_reader(file_name)
+      @books = []
+      if File.exist?("#{file_name}.json")
+        file = File.open("#{file_name}.json", 'r')
+        data = JSON.parse(file.read)
+        puts data
+        data.each do |book|
+          @books << Book.new(book['title'], book['author'])
         end
+        file.close
+        @books
+      else
+       []
+      end
     end
+
+    def self.person_reader(file_name)
+      @persons = []
+      if File.exist?("#{file_name}.json")
+        file = File.open("#{file_name}.json", 'r')
+        data = JSON.parse(file.read)
+        # puts data
+        data.each do |person|
+          if person['type'] == 'Student'
+            @persons << Student.new(person['age'], person['name'], person['classroom'], person['parent_permission'])
+          end
+        end
+        file.close
+      end
+      @persons
+    end
+
+    # def self.file_reader(file_name)
+    #     @books = []
+    #     if File.exist?("#{file_name}.json")
+    #       file = File.open("#{file_name}.json", 'r')
+    #       data = JSON.parse(file.read)
+    #       data.each do |book|
+    #         @books << Book.new(book['title'], book['author'])
+    #       end
+    #       file.close
+    #       @books
+    #     else
+    #      []
+    #     end
+    # end
+
 end
