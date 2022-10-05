@@ -32,7 +32,6 @@ class App
       Rental.list_all_rentals(@persons, @rentals)
     when '7'
       FileIO.writer_books('books', @books)
-      FileIO.save_people(@persons)
       puts 'Exit'
       exit
     else puts 'Invalid input'

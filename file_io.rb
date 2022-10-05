@@ -3,24 +3,34 @@ require './book'
 
 class FileIO
 
-    def self.books_data(books) 
-        books_data_array = [] 
-        books.each do |item| 
-            books_data_array << { title: item.title, author: item.author } 
-        end 
-        books_data_array 
+    # def self.books_data(books) 
+    #     books_data_array = [] 
+    #     books.each do |item| 
+    #         books_data_array << { title: item.title, author: item.author } 
+    #     end 
+    #     books_data_array 
+    # end 
+
+    def self.create_hash(data_list, list_type)
+        json_data = [] 
+        if list_type == 'books'
+          data_list.each do |item| 
+            json_data << { title: item.title, author: item.author } 
+          end 
+        elsif list_type == 'people'
+          data_list.each do |person|
+            json_data << { name: person.name, id: person.id, age: person.age }
+          end
+        elsif list_type == 'rentals'
+          data_list.each do |rental|
+            json_data << {}
+          end
+        end
+        json_data
     end 
 
-    def self.writer_books(file_name, content)
-        File.write("./#{file_name}.json", JSON.pretty_generate(FileIO.books_data(content)))
-    end
-
-    def self.save_people(people)
-        people_json_array = []
-        people.each do |person|
-            people_json_array << { name: person.name, id: person.id, age: person.age }
-        end
-        people_json_array
+    def self.writer_books(file_name, data_list)
+        File.write("./#{file_name}.json", JSON.pretty_generate(FileIO.create_hash(data_list, file_name)))
     end
 
     # def self.people_data(people)
