@@ -21,8 +21,7 @@ class Person < Nameable
   end
 
   def self.list_all_people(persons)
-    puts persons
-    persons.each { |person| puts "[#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}" }
+      persons.each { |person| puts "[#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}" }
   end
 
   def add_rental(book, date)

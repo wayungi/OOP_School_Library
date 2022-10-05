@@ -16,8 +16,8 @@ class Student < Person
 
     parent_permission = true
     permission = gets.chomp
-    if permission == 'N' || permission != 'n'
-      # parent_permission = false
+    if permission == 'N' || permission == 'n'
+      parent_permission = false
     end
 
     Student.new(age, name, '', parent_permission)
