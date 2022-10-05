@@ -3,7 +3,7 @@ class Student < Person
   attr_reader :belongs
 
   def initialize(age, name, classroom, parent_permission)
-    super(age, name, parent_permission)
+    super(age, name, parent_permission:parent_permission)
     @classroom = classroom
   end
 
@@ -13,8 +13,14 @@ class Student < Person
     print 'Name: '
     name = gets.chomp
     print 'Has parent permission? [Y/N]'
-    gets.chomp
-    Student.new(age, name, '')
+
+    parent_permission = true
+    permission = gets.chomp
+    if permission == 'N' || permission != 'n'
+      # parent_permission = false
+    end
+
+    Student.new(age, name, '', parent_permission)
   end
 
   def belongs=(classroom)
